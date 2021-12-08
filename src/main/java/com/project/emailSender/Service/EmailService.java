@@ -7,6 +7,8 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class EmailService {
@@ -29,5 +31,13 @@ public class EmailService {
 
     public void saveEmail(Email email){
         emailRepo.save(email);
+    }
+
+    public List<Email> getEmails(){
+        return emailRepo.findAll();
+    }
+
+    public void deleteEmail(String id){
+        emailRepo.deleteById(id);
     }
 }
