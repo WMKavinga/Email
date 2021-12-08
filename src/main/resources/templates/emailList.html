@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Java Inspires</title>
+    <style type="text/css">
+table {
+	border-collapse: collapse;
+}
+
+td {
+	text-align: center;
+	padding: 2px;
+}
+</style>
+</head>
+<body>
+<div align="center">
+    <br>
+    <h3>Sent Emails</h3>
+    <br />
+    <table border="1">
+        <tr>
+            <td>Id</td>
+            <td>To</td>
+            <td>Subject</td>
+            <td>Body</td>
+            <td>...</td>
+        </tr>
+        <tr th:each="email : ${emails}">
+            <td th:text="${email.id}">id</td>
+            <td th:text="${email.to}">Sent To</td>
+            <td th:text="${email.subject}">Subject</td>
+            <td th:text="${email.body}">Body</td>
+            <td><a th:href="@{/email/delete/{id}(id=${email.id})}" method="delete">Delete</a></td>
+        </tr>
+    </table>
+    <br> <a th:href="@{/home}">Send Another Mail</a> <br>
+</div>
+</body>
+</html>
